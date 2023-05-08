@@ -1,2 +1,2 @@
 [pylint.messages control]
-disable = C0103,C0301,W0621,R0913
+disable = C0103,C0301,W0621,R0913,R0914

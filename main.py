@@ -6,11 +6,11 @@ Aqui se ejecuta la demostración de la optimización de una función por un enja
 # librerias
 import numpy as np
 import matplotlib.pyplot as plt
-from funciones import esfera
-#from funciones import multimodal
+#from funciones import esfera
+from funciones import multimodal
 
-funcion = esfera
-#funcion = multimodal
+#funcion = esfera
+funcion = multimodal
 class Pez:
     """
     Definición de un "pez" (partícula)
@@ -63,8 +63,15 @@ def algoritmo_pso(limite,num_peces,max_iteraciones,w,c1,c2):
         pez = Pez(limite)
         cardumen.append(pez)
 
+    # Preparar la visualización de las curvas de nivel de la función
+    x = np.linspace(limite[0], limite[1], 400)
+    y = np.linspace(limite[0], limite[1], 400)
+    X, Y = np.meshgrid(x, y)
+    Z = funcion([X, Y])  # Evaluar la función objetivo en los puntos (X, Y)
+
     # iterar
     for iteracion in range(max_iteraciones):
+        plt.figure(figsize=(10,10))
         for pez in cardumen:
             pez.actualizar_velocidad(cardumen_mejor_posicion,w,c1,c2)
             pez.actualizar_posicion(limite)
@@ -74,13 +81,15 @@ def algoritmo_pso(limite,num_peces,max_iteraciones,w,c1,c2):
                 cardumen_mejor_score = score
                 cardumen_mejor_posicion = pez.posicion
 
-            plt.scatter(pez.posicion[0],pez.posicion[1],color='blue',alpha=0.3)
+            plt.scatter(pez.posicion[0],pez.posicion[1],color='red',alpha=0.5)
+        plt.contour(X, Y, Z, levels=20, alpha=0.5)
         plt.title(f"PSO. Iteración: {iteracion}")
         plt.xlim(limite[0],limite[1])
         plt.ylim(limite[0],limite[1])
         plt.xlabel("x")
         plt.ylabel("y")
         plt.show()
+        plt.savefig(f"img/resultados/iteracion_{funcion.__name__}_{iteracion}.png")
 
     return cardumen_mejor_posicion, cardumen_mejor_score
 
