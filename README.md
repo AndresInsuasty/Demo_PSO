@@ -5,13 +5,14 @@ Se minimiza funciones matematicas con el algoritmo de Particle swarm optimizatio
 Se asume de manera didactia que las particulas de enjambres son "peces" y el grupo o enjambre se ha denominado *"cardumen"*.
 
 ## Estructura de archivos
-.
+```
 ├── img
 ├── .pylintrc
 ├── funciones.py
 ├── main.py
 ├── README.md
 └── requirements.txt
+```
 
 **funciones.py**: Archivo donde se encuentran las funciones para ser minimizadas.
 Ejemplo: 
