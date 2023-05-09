@@ -71,3 +71,6 @@ w = 0.5 #peso o relevancia que se le da a la inercia del pez o particula
 c1 = 0.5 #importancia que se le da al conocimiento o experiencia cognitiva
 c2 = 0.5 #importancia que se le da al conocimiento e experiencia del cardumen
 ```
+## Contribuciones
+
+Consulta el [documento de contribuciones](CONTRIBUTING.md) para obtener información sobre cómo contribuir al proyecto.
